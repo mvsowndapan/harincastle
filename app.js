@@ -1,53 +1,49 @@
 var express = require('express');
 var app = express();
-const port= 3000;
+const port = 3000;
 
-
+//Body-parser .......................
 var bodyParser = require('body-parser');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
-    extended:true
+    extended: true
 }));
 
+//mongoDB Connection .........................
 var mongoose = require("mongoose");
 mongoose.Promise = global.Promise;
-mongoose.connect("mongodb://root:root1234@ds031822.mlab.com:31822/harincastle",{useNewUrlParser: true}).then(() => {
+mongoose.connect("mongodb://localhost:27017/harincastle", { useNewUrlParser: true }).then(() => {
     console.log("connection sucessfull");
 }).catch((err) => {
     console.log("Connection failed");
 });
 
+//Schema ........................................
 var UsernameSchema = new mongoose.Schema({
-    username:String
+    username: String
 });
-var User = mongoose.model("User",UsernameSchema);
+var User = mongoose.model("User", UsernameSchema);
 
-app.use("/",express.static("./"));
-app.get("/",(req,res) => {
+//endpoint ......................................
+app.use("/", express.static("./"));
+app.get("/", (req, res) => {
     // res.send("Sadfb");
-    res.sendFile(__dirname+"/index.html");
+    res.sendFile(__dirname + "/index.html");
 });
-
-app.listen(port,() => {
+app.listen(port, () => {
     console.log("server listening startted");
 });
 
-
-app.post("/createuser",(req,res) => {
-    //console.log(req.body);
-   var user = new User({
-       username: req.body.username
-   });
-   user.save()
-   .then((user) =>{
-       console.log(user);
-        res.sendFile(__dirname+"/text.html");
-        User.find().then((users) => {
-            console.log(users);
+//Create User endpoint ...................................
+app.post("/createuser", (req, res) => {
+    var user = new User({
+        username: req.body.username
+    });
+    user.save()
+        .then((user) => {
+            res.sendFile(__dirname + "/text.html");
         })
-
-   })
-   .catch(err => {
-      res.send("b");
-   });
+        .catch(err => {
+            res.send("b");
+        });
 });

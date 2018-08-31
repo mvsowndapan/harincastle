@@ -14,18 +14,10 @@ body{
     border:solid;
     border-width: 5px;
     border-color:black;
-    /* border-bottom: 5px; */
     border-bottom-color:white;
     
 }
-.photo{
-   width:15%;
-   height:15%; 
-   border:solid;
-   border-width: 5px;
-   border-color: aliceblue;
-   border-radius:100%;
-}
+
 
 .masterclientbutton{
     color:white;
@@ -47,24 +39,18 @@ body{
 .classfield{
     padding-top:3%;
 }
-.textfield{
-    padding-top:2%;
-    width:100%;
-    height:520px;
-    /* border:groove; */
-}
 
 .textfield1{
     float:left;
     width:47%;
     height:410px;
-    /* border:groove; */
+    padding-bottom: 5%;
 }
 
 .textfield11{
     border:groove;
     width:98%;
-    height:85%;
+    height:auto;
     border-width:1px;
 }
 .sentfield{
@@ -89,7 +75,7 @@ body{
     border-bottom: solid;
 }
 
-.send{
+.button{
     color:white;
     background-color: goldenrod;
     border:none;
@@ -105,6 +91,7 @@ body{
     float:right;
     width:47%;
     height:410px;
+    padding-bottom: 5%;
     /* border:groove; */
 }
 
@@ -118,13 +105,6 @@ body{
     color:goldenrod;
     text-align: center;
     font-size: 100%;
-}
-
-.title2{
-    padding-top:5%;
-    color:goldenrod;
-    text-align: center;
-   
 }
 
 .by{
@@ -143,3 +123,15 @@ body{
     border-bottom: solid;
 }
 
+h3{
+   color:white;
+   text-align: center;
+}
+
+.image{
+    width:10%;
+    height:70%;
+    float: right;
+    padding-right: 10%;
+    padding-top: 3%;
+}

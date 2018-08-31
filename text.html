@@ -7,36 +7,69 @@
     <title>Harincastle</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="/index.css" />
-    <script src="/index.js"></script>
 </head>
 
 <body>
     <div class="head">
+            <img class = "image" src = "bee.gif" />
         <p class="headline">Harincastle</p>
+      
     </div>
-    <center class="classfield">
-        <div class="textfield">
-            <div class="textfield1">
-                <input type="text" class="text" name="sender" placeholder="Enter the Username here..." />
-                <div class="textfield11">
-                    <p class="textarea" id=""><span>Recieved data ::: </span></p>
-                </div>
-                <input type="text" class="text" name="message1" placeholder="Enter the message here..." />
-                <button class="send" onclick="sent()">Send</button>
-            </div>
-            <div class="textfield2">
-                <input type="text" class="text" name="reciever" placeholder="Enter the Username here..." />
-                <div class="textfield11">
-                    <p class="textarea" id=""><span>Recieved data ::: </span></p>
-                </div>
-                <input type="text" class="text" name="message1" placeholder="Enter the message here..." />
-                <button class="send" onclick="sent()">Send</button>
-            </div>
-        </div>
-    </center>
 
-    <h5 class="title"> Intra-department Communication App</h5>
-    <h5 class="by">Developed by Sowndapan</h5>
+    <h3> "Enter the Username and Begin the Chat .. "</h3>
+
+    <centre class="classfield">
+
+        <div class="textfield1">
+                <input type="text" class="text" id="sender" placeholder="Enter the Username here..." required><br><br>
+                <input type="text" class="text" id="message1" placeholder="Enter the message here..." required>
+                <input type="submit" class="button" value="Send" onclick="leftUser();" /><br><br><br>
+                <div class="textfield11">
+                    <p class="textarea" id="leftbox"></p>
+                </div>
+        </div>
+        <div class="textfield2">
+                <input type="text" class="text" id="reciever" placeholder="Enter the Username here..." required><br><br>
+                <input type="text" class="text" id="message2" placeholder="Enter the message here..." required>
+                <input type="submit" class="button" value="Send" onclick="rightUser();" /><br><br><br>
+                <div class="textfield11">
+                    <p class="textarea" id="rightbox"></p>
+                </div>
+        </div>
+    </centre>
+
+    <script>
+
+        function leftUser() {
+            var message = document.getElementById("message1").value;
+            var User = document.getElementById("sender").value;
+            if (message.length == 0|| User.lenght == 0)
+                alert("fileds can't be empty !!");
+            else {
+                var usermessage = User + " :: " + message;
+                var node = document.createElement("LI");
+                var textnode = document.createTextNode(usermessage);
+                node.appendChild(textnode);
+                document.getElementById("rightbox").appendChild(node);
+            }
+        }
+
+        function rightUser() {
+            var message = document.getElementById("message2").value;
+            var User = document.getElementById("reciever").value;
+            if (message.length == 0|| User.lenght == 0)
+                alert("fileds can't be empty !!");
+            else {
+                var usermessage = User + " :: " + message;
+                var node = document.createElement("LI");
+                var textnode = document.createTextNode(usermessage);
+                node.appendChild(textnode);
+                document.getElementById("leftbox").appendChild(node);
+            }
+        }
+
+    </script>
+
 
 </body>
 
